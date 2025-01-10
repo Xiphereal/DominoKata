@@ -24,4 +24,13 @@ public class Tests
             .FormsCircularChain()
             .Should().BeTrue();
     }
+    
+    [Test]
+    public void SingleNonDoubletDomino_IsNotCircular()
+    {
+        DominoSet.Empty()
+            .With(new Domino(left: 1, right: 2))
+            .FormsCircularChain()
+            .Should().BeFalse();
+    }
 }

@@ -20,6 +20,6 @@ public class DominoSet
 
     public bool FormsCircularChain()
     {
-        return true;
+        return dominos.Any(x => x.IsDoublet());
     }
 }
