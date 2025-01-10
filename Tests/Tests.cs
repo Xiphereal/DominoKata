@@ -1,4 +1,5 @@
 ﻿using DominoKata;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace DominoKata.Tests;
@@ -16,8 +17,11 @@ public class Tests
     //  - [1|2] [1|2] -> [1|2] [2|1]
     
     [Test]
-    public void METHOD()
+    public void SingleDoubletDomino_IsCircular()
     {
-        Assert.Fail("asdfsadf");
+        DominoSet.Empty()
+            .With(new Domino(left: 1, right: 1))
+            .FormsCircularChain()
+            .Should().BeTrue();
     }
 }
