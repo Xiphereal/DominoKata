@@ -33,4 +33,13 @@ public class Tests
             .FormsCircularChain()
             .Should().BeFalse();
     }
+    
+    [Test]
+    public void StartingAndEndingWithSameDots_IsConsideredCircular()
+    {
+        DominoSet.Empty()
+            .With(new Domino(left: 1, right: 2)).With(new Domino(left: 2, right: 1))
+            .FormsCircularChain()
+            .Should().BeTrue();
+    }
 }

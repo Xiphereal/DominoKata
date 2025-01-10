@@ -20,6 +20,9 @@ public class DominoSet
 
     public bool FormsCircularChain()
     {
-        return dominos.Any(x => x.IsDoublet());
+        return FirstDominoHalf == LastDominoHalf;
     }
+
+    private int FirstDominoHalf => dominos.First().Left;
+    private int LastDominoHalf => dominos.Last().Right;
 }

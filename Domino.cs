@@ -11,8 +11,6 @@ public class Domino
         this.right = right;
     }
 
-    public bool IsDoublet()
-    {
-        return left == right;
-    }
+    public int Left => left;
+    public int Right => right;
 }
