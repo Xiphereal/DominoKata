@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoKata", "DominoKata.csproj", "{D00F1956-E6E9-40E4-A175-947F67580095}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominoKata.Tests", "Tests\DominoKata.Tests.csproj", "{70F7F8BD-9175-4996-A2FE-1A89BA363A3C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D00F1956-E6E9-40E4-A175-947F67580095}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D00F1956-E6E9-40E4-A175-947F67580095}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D00F1956-E6E9-40E4-A175-947F67580095}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D00F1956-E6E9-40E4-A175-947F67580095}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F7F8BD-9175-4996-A2FE-1A89BA363A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F7F8BD-9175-4996-A2FE-1A89BA363A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F7F8BD-9175-4996-A2FE-1A89BA363A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F7F8BD-9175-4996-A2FE-1A89BA363A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
