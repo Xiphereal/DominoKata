@@ -15,7 +15,7 @@ public class Tests
     // Order set.
     //  - [1|2] [2|1] -> [1|2] [2|1]
     //  - [1|2] [1|2] -> [1|2] [2|1]
-    
+
     [Test]
     public void SingleDoubletDomino_IsCircular()
     {
@@ -24,7 +24,7 @@ public class Tests
             .FormsCircularChain()
             .Should().BeTrue();
     }
-    
+
     [Test]
     public void SingleNonDoubletDomino_IsNotCircular()
     {
@@ -33,13 +33,22 @@ public class Tests
             .FormsCircularChain()
             .Should().BeFalse();
     }
-    
+
     [Test]
     public void StartingAndEndingWithSameDots_IsConsideredCircular()
     {
         DominoSet.Empty()
             .With(new Domino(left: 1, right: 2)).With(new Domino(left: 2, right: 1))
             .FormsCircularChain()
-            .Should().BeTrue();
+            .Should().BeTrue(); 
+    }
+    
+    [Test]
+    public void NotStartingAndEndingWithSameDots_IsNotCircular()
+    {
+        DominoSet.Empty()
+            .With(new Domino(left: 1, right: 2)).With(new Domino(left: 1, right: 2))
+            .FormsCircularChain()
+            .Should().BeFalse(); 
     }
 }
