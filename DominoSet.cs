@@ -39,7 +39,25 @@ public class DominoSet
 
     public void OrderToFormCircularChain()
     {
+        if (FormsCircularChain())
+            return;
+
+        OrderUnorderedSet();
+        
         if (!FormsCircularChain())
+            throw new ArgumentException();
+    }
+
+    private void OrderUnorderedSet()
+    {
+        var dominosBeforeOrdering = dominos.Count;
+        
+        var outOfOrderDomino = dominos.Last();
+        dominos.Remove(outOfOrderDomino);
+        dominos.Insert(1, outOfOrderDomino);
+        
+        var dominosAfterOrdering = dominos.Count;
+        if (dominosBeforeOrdering != dominosAfterOrdering)
             throw new ArgumentException();
     }
 }

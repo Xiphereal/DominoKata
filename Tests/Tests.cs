@@ -88,4 +88,17 @@ public class Tests
 
         dominoSet.FormsCircularChain().Should().BeTrue();
     }
+
+    [Test]
+    public void UnorderedDominoSet_OutOfOrderDominoIsTheLast_SetIsOrderedToBeCircular()
+    {
+        var dominoSet = DominoSet.Empty()
+            .With(new Domino(1, 2))
+            .With(new Domino(2, 1))
+            .With(new Domino(2, 2));
+
+        dominoSet.FormsCircularChain().Should().BeFalse();
+        dominoSet.OrderToFormCircularChain();
+        dominoSet.FormsCircularChain().Should().BeTrue();
+    }
 }
