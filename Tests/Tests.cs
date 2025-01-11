@@ -33,16 +33,16 @@ public class Tests
         DominoSet.Empty()
             .With(new Domino(left: 1, right: 2)).With(new Domino(left: 2, right: 1))
             .FormsCircularChain()
-            .Should().BeTrue(); 
+            .Should().BeTrue();
     }
-    
+
     [Test]
     public void NotStartingAndEndingWithSameDots_IsNotCircular()
     {
         DominoSet.Empty()
             .With(new Domino(left: 1, right: 2)).With(new Domino(left: 1, right: 2))
             .FormsCircularChain()
-            .Should().BeFalse(); 
+            .Should().BeFalse();
     }
 
     [Test]
@@ -53,9 +53,9 @@ public class Tests
             .With(new Domino(left: 2, right: 2))
             .With(new Domino(left: 2, right: 1))
             .FormsCircularChain()
-            .Should().BeTrue(); 
+            .Should().BeTrue();
     }
-    
+
     [Test]
     public void InBetweenDominosAreNotLinked_IsNotCircular()
     {
@@ -64,9 +64,9 @@ public class Tests
             .With(new Domino(left: 3, right: 2))
             .With(new Domino(left: 2, right: 1))
             .FormsCircularChain()
-            .Should().BeFalse(); 
+            .Should().BeFalse();
     }
-    
+
     [Test]
     public void MoreThanTwoDominoSetNotStartingAndEndingWithSameDots_IsNotCircular()
     {
@@ -75,14 +75,14 @@ public class Tests
             .With(new Domino(left: 2, right: 2))
             .With(new Domino(left: 2, right: 2))
             .FormsCircularChain()
-            .Should().BeFalse(); 
+            .Should().BeFalse();
     }
 
     [Test]
     public void AttemptOrderingAlreadyCircularDominoSet_KeepsSetCircular()
     {
         var dominoSet = DominoSet.Empty()
-            .With(new Domino(1,2)).With(new Domino(2,1));
+            .With(new Domino(1, 2)).With(new Domino(2, 1));
 
         dominoSet.OrderToFormCircularChain();
 
