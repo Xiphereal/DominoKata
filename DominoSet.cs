@@ -39,5 +39,7 @@ public class DominoSet
 
     public void OrderToFormCircularChain()
     {
+        if (!FormsCircularChain())
+            throw new ArgumentException();
     }
 }
