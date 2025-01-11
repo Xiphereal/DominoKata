@@ -20,13 +20,18 @@ public class DominoSet
 
     public bool FormsCircularChain()
     {
+        return AreInBetweenDominosLinked() && FirstDominoHalf == LastDominoHalf;
+    }
+
+    private bool AreInBetweenDominosLinked()
+    {
         for (int i = 0; i < dominos.Count - 1; i++)
         {
             if (dominos[i].Right != dominos[i + 1].Left)
                 return false;
         }
 
-        return FirstDominoHalf == LastDominoHalf;
+        return true;
     }
 
     private int FirstDominoHalf => dominos.First().Left;
