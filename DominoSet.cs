@@ -25,4 +25,8 @@ public class DominoSet
 
     private int FirstDominoHalf => dominos.First().Left;
     private int LastDominoHalf => dominos.Last().Right;
+
+    public void OrderToFormCircularChain()
+    {
+    }
 }

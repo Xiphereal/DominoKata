@@ -46,4 +46,15 @@ public class Tests
             .FormsCircularChain()
             .Should().BeFalse(); 
     }
+
+    [Test]
+    public void AttemptOrderingAlreadyCircularDominoSet_KeepsSetCircular()
+    {
+        var dominoSet = DominoSet.Empty()
+            .With(new Domino(1,2)).With(new Domino(2,1));
+
+        dominoSet.OrderToFormCircularChain();
+
+        dominoSet.FormsCircularChain().Should().BeTrue();
+    }
 }
