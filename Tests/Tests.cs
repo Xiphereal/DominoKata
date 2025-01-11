@@ -57,6 +57,17 @@ public class Tests
     }
     
     [Test]
+    public void InBetweenDominosAreNotLinked_IsNotCircular()
+    {
+        DominoSet.Empty()
+            .With(new Domino(left: 1, right: 2))
+            .With(new Domino(left: 3, right: 2))
+            .With(new Domino(left: 2, right: 1))
+            .FormsCircularChain()
+            .Should().BeFalse(); 
+    }
+    
+    [Test]
     public void MoreThanTwoDominoSetNotStartingAndEndingWithSameDots_IsNotCircular()
     {
         DominoSet.Empty()
