@@ -29,7 +29,7 @@ public class DominoSet
                 return false;
         }
 
-        return true;
+        return FirstDominoHalf == LastDominoHalf;
     }
 
     private int FirstDominoHalf => dominos.First().Left;

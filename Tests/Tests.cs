@@ -55,6 +55,17 @@ public class Tests
             .FormsCircularChain()
             .Should().BeTrue(); 
     }
+    
+    [Test]
+    public void MoreThanTwoDominoSetNotStartingAndEndingWithSameDots_IsNotCircular()
+    {
+        DominoSet.Empty()
+            .With(new Domino(left: 1, right: 2))
+            .With(new Domino(left: 2, right: 2))
+            .With(new Domino(left: 2, right: 2))
+            .FormsCircularChain()
+            .Should().BeFalse(); 
+    }
 
     [Test]
     public void AttemptOrderingAlreadyCircularDominoSet_KeepsSetCircular()
