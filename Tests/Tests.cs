@@ -8,8 +8,7 @@ public class Tests
 {
     // Circular chain not possible -> Output it.
     // Order set.
-    //  - [1|2] [2|1] -> [1|2] [2|1]
-    //  - [1|2] [1|2] -> [1|2] [2|1]
+    //  - [1|2] [2|1] [2|2] -> [1|2] [2|2] [2|1]
 
     [Test]
     public void SingleDoubletDomino_IsCircular()
