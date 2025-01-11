@@ -1,5 +1,4 @@
-﻿using DominoKata;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
 
 namespace DominoKata.Tests;
@@ -44,6 +43,17 @@ public class Tests
             .With(new Domino(left: 1, right: 2)).With(new Domino(left: 1, right: 2))
             .FormsCircularChain()
             .Should().BeFalse(); 
+    }
+
+    [Test]
+    public void InBetweenDominosAreAlsoLinked_IsCircular()
+    {
+        DominoSet.Empty()
+            .With(new Domino(left: 1, right: 2))
+            .With(new Domino(left: 2, right: 2))
+            .With(new Domino(left: 2, right: 1))
+            .FormsCircularChain()
+            .Should().BeTrue(); 
     }
 
     [Test]

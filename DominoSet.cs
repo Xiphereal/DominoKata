@@ -20,7 +20,16 @@ public class DominoSet
 
     public bool FormsCircularChain()
     {
-        return FirstDominoHalf == LastDominoHalf;
+        if (dominos.Count == 1)
+            return FirstDominoHalf == LastDominoHalf;
+
+        for (int i = 0; i < dominos.Count - 1; i++)
+        {
+            if (dominos[i].Right != dominos[i + 1].Left)
+                return false;
+        }
+
+        return true;
     }
 
     private int FirstDominoHalf => dominos.First().Left;
