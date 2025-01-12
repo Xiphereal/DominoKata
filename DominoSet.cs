@@ -29,7 +29,7 @@ public class DominoSet
         {
             var domino = dominos[i];
             var dominoAtItsRight = dominos[i + 1];
-            
+
             if (!domino.LinksWith(dominoAtItsRight))
                 return false;
         }
@@ -46,22 +46,59 @@ public class DominoSet
             return new Result(Success: true);
 
         OrderUnorderedSet();
-        
+
         return new Result(Success: FormsCircularChain());
     }
 
     private void OrderUnorderedSet()
     {
         var dominosBeforeOrdering = dominos.Count;
-        
-        var outOfOrderDomino = dominos.Last();
-        dominos.Remove(outOfOrderDomino);
-        dominos.Insert(1, outOfOrderDomino);
-        
+
+        while (!FormsCircularChain())
+        {
+            var result = asdfasdf();
+            if (result.Success.HasValue && !result.Success.Value)
+                break;
+        }
+
         var dominosAfterOrdering = dominos.Count;
         if (dominosBeforeOrdering != dominosAfterOrdering)
             throw new ArgumentException();
     }
+
+    private Result asdfasdf()
+    {
+        Domino outOfOrderDomino = null;
+        for (int i = 0; i < dominos.Count - 1; i++)
+        {
+            var domino = dominos[i];
+            var dominoAtItsRight = dominos[i + 1];
+
+            if (!domino.LinksWith(dominoAtItsRight))
+                outOfOrderDomino = dominoAtItsRight;
+        }
+
+        if (outOfOrderDomino == null)
+            return new Result(Success: false);
+        
+        dominos.Remove(outOfOrderDomino);
+
+        var newFittingPlace = 0;
+        for (int i = 0; i < dominos.Count - 1; i++)
+        {
+            var domino = dominos[i];
+
+            if (outOfOrderDomino.LinksWith(domino))
+            {
+                newFittingPlace = i;
+                break;
+            }
+        }
+
+        dominos.Insert(newFittingPlace, outOfOrderDomino);
+
+        return new Result(Success: null);
+    }
 }
 
-public record Result(bool Success);
+public record Result(bool? Success);

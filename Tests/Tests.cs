@@ -101,6 +101,20 @@ public class Tests
         dominoSet.OrderToFormCircularChain();
         dominoSet.FormsCircularChain().Should().BeTrue();
     }
+    
+    [Test]
+    public void UnorderedDominoSetOfMoreThan3Dominos_SoSeveralDominosAreOutOfOrder_SetIsOrderedToBeCircular()
+    {
+        var dominoSet = DominoSet.Empty()
+            .With(new Domino(2, 3))
+            .With(new Domino(1, 2))
+            .With(new Domino(2, 1))
+            .With(new Domino(3, 2));
+
+        dominoSet.FormsCircularChain().Should().BeFalse();
+        dominoSet.OrderToFormCircularChain();
+        dominoSet.FormsCircularChain().Should().BeTrue();
+    }
 
     [Test]
     public void DominosKnowWhenTheyMatchWithOneAnother()
