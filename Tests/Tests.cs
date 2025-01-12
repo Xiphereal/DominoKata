@@ -120,7 +120,15 @@ public class Tests
     public void DominosKnowWhenTheyMatchWithOneAnother()
     {
         new Domino(1, 2).LinksWith(new Domino(2, 1)).Should().BeTrue();
-        new Domino(1, 2).LinksWith(new Domino(1, 2)).Should().BeFalse();
+        new Domino(1, 2).LinksWith(new Domino(3, 4)).Should().BeFalse();
+    }
+    
+    [Test]
+    public void DominosCanMatchByTurning()
+    {
+        new Domino(1, 2)
+            .LinksConsideringTurningWith(new Domino(1, 2))
+            .Should().BeTrue();
     }
     
     [Test]
