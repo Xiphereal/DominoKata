@@ -101,6 +101,13 @@ public class Tests
         dominoSet.OrderToFormCircularChain();
         dominoSet.FormsCircularChain().Should().BeTrue();
     }
+
+    [Test]
+    public void DominosKnowWhenTheyMatchWithOneAnother()
+    {
+        new Domino(1, 2).LinksWith(new Domino(2, 1)).Should().BeTrue();
+        new Domino(1, 2).LinksWith(new Domino(1, 2)).Should().BeFalse();
+    }
     
     [Test]
     public void DominoSetThatCanNotBeOrderedToBeCircular_ItIsReturned()

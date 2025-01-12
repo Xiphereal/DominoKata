@@ -19,4 +19,9 @@ public class Domino
 
     public int Left => left;
     public int Right => right;
+
+    public bool LinksWith(Domino dominoAtMyRight)
+    {
+        return this.right == dominoAtMyRight.left;
+    }
 }
