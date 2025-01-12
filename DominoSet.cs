@@ -56,7 +56,7 @@ public class DominoSet
 
         while (!FormsCircularChain())
         {
-            var result = asdfasdf();
+            var result = AttemptOrderingOneOutOfPlaceDomino();
             if (result.Success.HasValue && !result.Success.Value)
                 break;
         }
@@ -66,38 +66,46 @@ public class DominoSet
             throw new ArgumentException();
     }
 
-    private Result asdfasdf()
+    private Result AttemptOrderingOneOutOfPlaceDomino()
     {
-        Domino outOfOrderDomino = null;
-        for (int i = 0; i < dominos.Count - 1; i++)
-        {
-            var domino = dominos[i];
-            var dominoAtItsRight = dominos[i + 1];
+        var lastOutOfOrderDomino = LastOutOfOrderDomino();
 
-            if (!domino.LinksWith(dominoAtItsRight))
-                outOfOrderDomino = dominoAtItsRight;
-        }
-
-        if (outOfOrderDomino == null)
+        if (lastOutOfOrderDomino == null)
             return new Result(Success: false);
         
-        dominos.Remove(outOfOrderDomino);
+        dominos.Remove(lastOutOfOrderDomino);
 
         var newFittingPlace = 0;
         for (int i = 0; i < dominos.Count - 1; i++)
         {
             var domino = dominos[i];
 
-            if (outOfOrderDomino.LinksWith(domino))
+            if (lastOutOfOrderDomino.LinksWith(domino))
             {
                 newFittingPlace = i;
                 break;
             }
         }
 
-        dominos.Insert(newFittingPlace, outOfOrderDomino);
+        dominos.Insert(newFittingPlace, lastOutOfOrderDomino);
 
         return new Result(Success: null);
+    }
+
+    private Domino? LastOutOfOrderDomino()
+    {
+        Domino lastOutOfOrder = null;
+        
+        for (int i = 0; i < dominos.Count - 1; i++)
+        {
+            var domino = dominos[i];
+            var dominoAtItsRight = dominos[i + 1];
+
+            if (!domino.LinksWith(dominoAtItsRight))
+                lastOutOfOrder = dominoAtItsRight;
+        }
+
+        return lastOutOfOrder;
     }
 }
 
