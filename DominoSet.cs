@@ -27,7 +27,10 @@ public class DominoSet
     {
         for (int i = 0; i < dominos.Count - 1; i++)
         {
-            if (dominos[i].Right != dominos[i + 1].Left)
+            var domino = dominos[i];
+            var dominoAtItsRight = dominos[i + 1];
+            
+            if (!domino.LinksWith(dominoAtItsRight))
                 return false;
         }
 
