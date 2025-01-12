@@ -27,9 +27,12 @@ public class Domino
 
     public bool LinksConsideringTurningWith(Domino dominoAtMyRight)
     {
-        return this.left == dominoAtMyRight.left
-               || this.left == dominoAtMyRight.right
-               || this.right == dominoAtMyRight.left
-               || this.right == dominoAtMyRight.right;
+        return this.LinksWith(dominoAtMyRight)
+               || this.Turn().LinksWith(dominoAtMyRight);
+    }
+
+    private Domino Turn()
+    {
+        return new Domino(left: right, right: left);
     }
 }
