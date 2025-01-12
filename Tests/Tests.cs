@@ -90,7 +90,7 @@ public class Tests
     }
 
     [Test]
-    public void UnorderedDominoSet_OutOfOrderDominoIsTheLast_SetIsOrderedToBeCircular()
+    public void UnorderedDominoSetOf3Dominos_SetIsOrderedToBeCircular()
     {
         var dominoSet = DominoSet.Empty()
             .With(new Domino(1, 2))
