@@ -72,30 +72,33 @@ public class DominoSet
 
         if (lastOutOfOrderDomino == null)
             return new Result(Success: false);
-        
+
         dominos.Remove(lastOutOfOrderDomino);
 
-        var newFittingPlace = 0;
+        dominos.Insert(
+            FindFittingPlaceFor(lastOutOfOrderDomino),
+            lastOutOfOrderDomino);
+
+        return new Result(Success: null);
+    }
+
+    private int FindFittingPlaceFor(Domino lastOutOfOrderDomino)
+    {
         for (int i = 0; i < dominos.Count - 1; i++)
         {
             var domino = dominos[i];
 
             if (lastOutOfOrderDomino.LinksWith(domino))
-            {
-                newFittingPlace = i;
-                break;
-            }
+                return i;
         }
 
-        dominos.Insert(newFittingPlace, lastOutOfOrderDomino);
-
-        return new Result(Success: null);
+        return 0;
     }
 
     private Domino? LastOutOfOrderDomino()
     {
         Domino lastOutOfOrder = null;
-        
+
         for (int i = 0; i < dominos.Count - 1; i++)
         {
             var domino = dominos[i];
