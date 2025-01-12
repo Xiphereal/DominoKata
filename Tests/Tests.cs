@@ -101,4 +101,25 @@ public class Tests
         dominoSet.OrderToFormCircularChain();
         dominoSet.FormsCircularChain().Should().BeTrue();
     }
+    
+    [Test]
+    public void DominoSetThatCanNotBeOrderedToBeCircular_ItIsReturned()
+    {
+        var dominoSet = DominoSet.Empty()
+            .With(new Domino(1, 2))
+            .With(new Domino(2, 2));
+
+        dominoSet.OrderToFormCircularChain().Success.Should().BeFalse();
+    }
+    
+    [Test]
+    public void DominoSetThatCanBeOrderedToBeCircular_ItIsReturned()
+    {
+        var dominoSet = DominoSet.Empty()
+            .With(new Domino(1, 2))
+            .With(new Domino(2, 1))
+            .With(new Domino(2, 2));
+
+        dominoSet.OrderToFormCircularChain().Success.Should().BeTrue();
+    }
 }

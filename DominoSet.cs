@@ -37,15 +37,14 @@ public class DominoSet
     private int FirstDominoHalf => dominos.First().Left;
     private int LastDominoHalf => dominos.Last().Right;
 
-    public void OrderToFormCircularChain()
+    public Result OrderToFormCircularChain()
     {
         if (FormsCircularChain())
-            return;
+            return new Result(Success: true);
 
         OrderUnorderedSet();
         
-        if (!FormsCircularChain())
-            throw new ArgumentException();
+        return new Result(Success: FormsCircularChain());
     }
 
     private void OrderUnorderedSet()
@@ -61,3 +60,5 @@ public class DominoSet
             throw new ArgumentException();
     }
 }
+
+public record Result(bool Success);
